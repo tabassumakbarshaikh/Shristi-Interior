@@ -7,521 +7,532 @@
   <meta name="description" content="Shristi Interior – Trusted carpenter and interior decorator in Thane West, Manpada. Custom carpentry, home furniture, full interior decoration. 4.7★ rated. Call 093220 62239." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <style>
-    /* ===== CSS VARIABLES ===== */
+    /* ===== VARIABLES ===== */
     :root {
-      --brown-dark:  #3B2314;
-      --brown-mid:   #6B3F23;
-      --brown-light: #A0623A;
-      --gold:        #C9963A;
-      --gold-light:  #E8B96A;
-      --cream:       #FAF6EF;
-      --cream-dark:  #F0E8DA;
-      --charcoal:    #2A2A2A;
-      --text-muted:  #6B5E52;
-      --white:       #FFFFFF;
-      --shadow:      0 8px 40px rgba(59,35,20,0.13);
-      --radius:      14px;
-      --transition:  0.35s cubic-bezier(0.4,0,0.2,1);
+      --bd:  #2C1A0E;
+      --bm:  #5C3418;
+      --bl:  #8B5A2B;
+      --gold:      #C8922A;
+      --gold-lt:   #E4B86A;
+      --gold-pale: #F5DFA0;
+      --cream:     #FBF7F1;
+      --cream-2:   #F3EBE0;
+      --cream-3:   #EAE0D2;
+      --white:     #FFFFFF;
+      --ink:       #1E1208;
+      --muted:     #7A6554;
+      --shadow-sm: 0 2px 12px rgba(44,26,14,0.10);
+      --shadow:    0 8px 40px rgba(44,26,14,0.14);
+      --shadow-lg: 0 20px 60px rgba(44,26,14,0.20);
+      --radius:    16px;
+      --trans:     0.35s cubic-bezier(0.4,0,0.2,1);
     }
 
     /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      overflow-x: hidden;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
+    button { font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; }
 
     /* ===== PAGE SYSTEM ===== */
-    .page { display: none; }
+    .page { display: none; animation: fadeIn 0.4s ease; }
     .page.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
     /* ===== NAVBAR ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(59,35,20,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201,150,58,0.25);
-      padding: 0 5%;
+      height: 70px;
+      background: rgba(44,26,14,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,146,42,0.18);
       display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-      transition: var(--transition);
+      padding: 0 6%;
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px; cursor: pointer;
-    }
-    .nav-logo-icon {
-      width: 38px; height: 38px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      border-radius: 8px;
+    .nav-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+    .nav-brand-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
     }
-    .nav-logo-text { color: var(--white); }
-    .nav-logo-text span { display: block; }
-    .nav-logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
-    .nav-logo-text .tagline { font-size: 0.65rem; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; }
+    .nav-brand-logo i { color: var(--bd); font-size: 18px; }
+    .nav-brand-text .n1 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); }
+    .nav-brand-text .n2 { font-size: 0.62rem; color: var(--gold-lt); letter-spacing: 2px; text-transform: uppercase; }
 
-    .nav-links {
-      display: flex; align-items: center; gap: 6px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
-      color: rgba(255,255,255,0.82);
-      font-size: 0.88rem; font-weight: 600;
-      padding: 8px 14px; border-radius: 8px;
-      transition: var(--transition);
-      cursor: pointer;
-      letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.78); font-size: 0.87rem; font-weight: 500;
+      padding: 8px 15px; border-radius: 8px; transition: var(--trans); cursor: pointer;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--gold-light);
-      background: rgba(201,150,58,0.12);
+    .nav-links a:hover { color: var(--gold-lt); background: rgba(200,146,42,0.10); }
+    .nav-links a.active { color: var(--gold-lt); background: rgba(200,146,42,0.12); }
+    .nav-cta-btn {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%);
+      color: var(--bd) !important; font-weight: 700 !important;
+      padding: 9px 22px !important; border-radius: 50px !important;
+      display: flex; align-items: center; gap: 7px;
     }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
-      color: var(--brown-dark) !important;
-      padding: 9px 20px !important;
-      border-radius: 50px !important;
-      font-weight: 700 !important;
-    }
-    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .nav-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); border-radius: 2px; transition: var(--transition);
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--trans); }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .mobile-menu {
-      display: none; position: fixed; top: 68px; left: 0; right: 0;
-      background: rgba(59,35,20,0.98); backdrop-filter: blur(12px);
-      padding: 20px 5% 30px; z-index: 999; border-bottom: 1px solid rgba(201,150,58,0.2);
+    .mob-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
+      background: rgba(44,26,14,0.98); padding: 16px 6% 28px;
+      border-bottom: 1px solid rgba(200,146,42,0.15);
     }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block; color: rgba(255,255,255,0.85);
-      padding: 14px 0; font-size: 1rem; font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      cursor: pointer; transition: color 0.2s;
+    .mob-menu.open { display: block; }
+    .mob-menu a {
+      display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.82);
+      padding: 14px 0; font-size: 0.95rem; font-weight: 500; cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s;
     }
-    .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold-light); }
-    .mobile-menu .m-cta {
-      margin-top: 16px; display: block;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: var(--brown-dark) !important; text-align: center;
-      padding: 14px !important; border-radius: 10px; font-weight: 700 !important;
-      border: none !important;
+    .mob-menu a:hover, .mob-menu a.active { color: var(--gold-lt); }
+    .mob-menu a i { width: 18px; color: var(--gold); }
+    .mob-menu-cta {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 18px; padding: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: var(--bd) !important; font-weight: 700 !important;
+      border-radius: 10px; border-bottom: none !important;
     }
 
-    /* ===== SECTION SPACING ===== */
-    section { padding: 90px 5%; }
-    .pt-nav { padding-top: 110px; }
-
-    /* ===== SECTION HEADER ===== */
-    .sec-label {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      margin-bottom: 12px;
+    /* ===== HELPERS ===== */
+    section { padding: 90px 6%; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 18px; border-radius: 50px;
+      background: rgba(200,146,42,0.10); border: 1px solid rgba(200,146,42,0.25);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
     }
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      color: var(--brown-dark); line-height: 1.2; margin-bottom: 16px;
+    .h-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700;
+      color: var(--bd); line-height: 1.18; margin-bottom: 14px;
     }
-    .sec-sub {
-      font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7;
-    }
-    .sec-header { margin-bottom: 52px; }
-    .sec-header.center { text-align: center; }
-    .sec-header.center .sec-sub { margin: 0 auto; }
-    .divider {
-      width: 52px; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      border-radius: 2px; margin: 18px 0;
-    }
-    .divider.center { margin: 18px auto; }
+    .h-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.75; }
+    .gold-bar { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); border-radius: 2px; margin: 16px 0; }
+    .gold-bar.cx { margin-left: auto; margin-right: auto; }
+    .sec-head { margin-bottom: 56px; }
+    .sec-head.cx { text-align: center; }
+    .sec-head.cx .h-sub { margin: 0 auto; }
 
     /* ===== BUTTONS ===== */
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.92rem;
-      padding: 14px 28px; border-radius: 50px; border: none;
-      cursor: pointer; transition: var(--transition); letter-spacing: 0.3px;
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.92rem;
+      padding: 14px 28px; border-radius: 50px; border: none; cursor: pointer;
+      transition: var(--trans); letter-spacing: 0.2px; text-decoration: none;
     }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: var(--brown-dark);
-    }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,150,58,0.35); }
-    .btn-outline {
-      background: transparent; border: 2px solid var(--white); color: var(--white);
-    }
-    .btn-outline:hover { background: var(--white); color: var(--brown-dark); }
-    .btn-dark {
-      background: var(--brown-dark); color: var(--white);
-    }
-    .btn-dark:hover { background: var(--brown-mid); transform: translateY(-2px); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%); color: var(--bd); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,146,42,0.35); }
+    .btn-outline-w { background: transparent; border: 2px solid rgba(255,255,255,0.6); color: var(--white); }
+    .btn-outline-w:hover { background: var(--white); color: var(--bd); }
+    .btn-dark { background: var(--bd); color: var(--white); }
+    .btn-dark:hover { background: var(--bm); transform: translateY(-2px); }
 
-    /* ===== FLOATING WHATSAPP ===== */
+    /* ===== FLOATING WA ===== */
     .float-wa {
-      position: fixed; bottom: 28px; right: 24px; z-index: 998;
+      position: fixed; bottom: 28px; right: 26px; z-index: 997;
       width: 58px; height: 58px; border-radius: 50%;
-      background: #25D366; color: white; font-size: 26px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-      cursor: pointer; transition: var(--transition);
-      animation: waPulse 2.5s ease-in-out infinite;
-      text-decoration: none;
+      background: #22C35E; color: var(--white);
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+      cursor: pointer; box-shadow: 0 6px 24px rgba(34,195,94,0.45);
+      transition: var(--trans); animation: pulseWa 3s ease-in-out infinite;
     }
-    .float-wa:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
-    @keyframes waPulse {
-      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 6px 32px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.1); }
+    .float-wa:hover { transform: scale(1.1); }
+    @keyframes pulseWa {
+      0%,100% { box-shadow: 0 6px 24px rgba(34,195,94,0.45); }
+      50% { box-shadow: 0 6px 32px rgba(34,195,94,0.7), 0 0 0 12px rgba(34,195,94,0.08); }
     }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(135deg, rgba(59,35,20,0.93) 0%, rgba(107,63,35,0.85) 60%, rgba(59,35,20,0.75) 100%),
-        url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&q=80') center/cover no-repeat;
-      display: flex; align-items: center;
-      padding: 0 5%;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9963A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .hero-content { position: relative; max-width: 650px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,150,58,0.15); border: 1px solid rgba(201,150,58,0.35);
-      color: var(--gold-light); padding: 8px 16px; border-radius: 50px;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeUp 0.6s ease both;
-    }
-    .hero-badge .star { color: var(--gold); }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      color: var(--white); line-height: 1.15; margin-bottom: 22px;
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-    .hero h1 em { color: var(--gold-light); font-style: italic; }
-    .hero p {
-      color: rgba(255,255,255,0.78); font-size: 1.08rem; line-height: 1.7;
-      margin-bottom: 36px;
-      animation: fadeUp 0.6s 0.2s ease both;
-    }
-    .hero-btns {
-      display: flex; gap: 14px; flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-    .hero-stats {
-      display: flex; gap: 36px; margin-top: 52px; flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.4s ease both;
-    }
-    .hero-stat .num {
-      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
-      color: var(--gold-light); display: block;
-    }
-    .hero-stat .label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== SERVICES PAGE ===== */
-    #page-services { background: var(--cream); }
-    .services-intro { padding-top: 110px; padding-bottom: 0; }
-    .services-grid { padding-top: 40px; }
-
-    .svc-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      display: flex; flex-direction: column;
-    }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(59,35,20,0.18); }
-    .svc-img {
-      height: 220px;
-      background-size: cover; background-position: center;
-      position: relative;
-    }
-    .svc-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(59,35,20,0.5));
-    }
-    .svc-icon {
-      position: absolute; bottom: 18px; left: 20px; z-index: 1;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-    }
-    .svc-body { padding: 28px; flex: 1; }
-    .svc-body h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.35rem;
-      color: var(--brown-dark); margin-bottom: 12px;
-    }
-    .svc-body p { font-size: 0.93rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
-    .svc-features { display: flex; flex-direction: column; gap: 8px; }
-    .svc-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.88rem; color: var(--charcoal); font-weight: 500;
-    }
-    .svc-features li::before {
-      content: '✓'; width: 20px; height: 20px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: var(--brown-dark); font-size: 0.7rem; font-weight: 800;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-
-    /* ===== WHY CHOOSE US ===== */
-    #page-why { background: var(--white); }
-    .why-intro { padding-top: 110px; padding-bottom: 0; }
-
-    .rating-hero {
-      background: linear-gradient(135deg, var(--brown-dark), var(--brown-mid));
-      border-radius: 20px; padding: 50px; margin-bottom: 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 30px;
-      position: relative; overflow: hidden;
-    }
-    .rating-hero::before {
-      content: '★'; position: absolute; right: -20px; top: -30px;
-      font-size: 200px; color: rgba(201,150,58,0.07); line-height: 1;
-    }
-    .rating-big .num {
-      font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700;
-      color: var(--gold-light); line-height: 1;
-    }
-    .rating-big .stars { color: var(--gold); font-size: 1.4rem; margin: 6px 0; }
-    .rating-big .count { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
-    .rating-text { max-width: 420px; }
-    .rating-text h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 12px;
-    }
-    .rating-text p { color: rgba(255,255,255,0.72); line-height: 1.7; font-size: 0.95rem; }
-
-    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .why-card {
-      background: var(--cream); border-radius: var(--radius);
-      padding: 32px; border-left: 4px solid var(--gold);
-      transition: var(--transition);
-    }
-    .why-card:hover { transform: translateX(4px); box-shadow: var(--shadow); }
-    .why-icon { font-size: 2rem; margin-bottom: 16px; }
-    .why-card h4 {
-      font-family: 'Playfair Display', serif; font-size: 1.15rem;
-      color: var(--brown-dark); margin-bottom: 10px;
-    }
-    .why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
-
-    /* Reviews */
-    .reviews-section { padding-top: 60px; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .review-card {
-      background: var(--cream); border-radius: var(--radius); padding: 28px;
-      position: relative; border: 1px solid rgba(201,150,58,0.15);
-    }
-    .review-card::before {
-      content: '"'; position: absolute; top: 12px; right: 20px;
-      font-family: 'Playfair Display', serif; font-size: 4rem;
-      color: rgba(201,150,58,0.15); line-height: 1;
-    }
-    .review-stars { color: var(--gold); margin-bottom: 14px; font-size: 0.9rem; }
-    .review-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
-    .review-author { display: flex; align-items: center; gap: 12px; }
-    .review-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--brown-mid), var(--brown-light));
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 700; font-size: 0.9rem;
-    }
-    .review-name { font-weight: 700; font-size: 0.88rem; color: var(--brown-dark); }
-    .review-loc { font-size: 0.78rem; color: var(--text-muted); }
-
-    /* ===== CONTACT PAGE ===== */
-    #page-contact { background: var(--cream); }
-    .contact-intro { padding-top: 110px; padding-bottom: 0; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; padding-top: 50px; align-items: start;
-    }
-
-    .contact-info { display: flex; flex-direction: column; gap: 24px; }
-    .info-card {
-      background: var(--white); border-radius: var(--radius); padding: 26px;
-      display: flex; gap: 18px; align-items: flex-start;
-      box-shadow: 0 2px 16px rgba(59,35,20,0.07);
-      transition: var(--transition);
-    }
-    .info-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-    .info-icon {
-      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      display: flex; align-items: center; justify-content: center; font-size: 20px;
-    }
-    .info-text h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 700; margin-bottom: 6px; }
-    .info-text p { font-size: 0.95rem; color: var(--charcoal); font-weight: 600; line-height: 1.5; }
-    .info-text small { color: var(--text-muted); font-size: 0.8rem; }
-    .info-text a { color: var(--brown-mid); }
-    .info-text a:hover { color: var(--gold); }
-
-    /* WhatsApp contact btn */
-    .wa-contact-btn {
-      display: flex; align-items: center; gap: 12px; justify-content: center;
-      background: #25D366; color: white; font-weight: 700; font-size: 1rem;
-      padding: 18px 24px; border-radius: var(--radius); cursor: pointer;
-      text-decoration: none; transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-    }
-    .wa-contact-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
-
-    /* Contact Form */
-    .contact-form-wrap {
-      background: var(--white); border-radius: 20px; padding: 40px;
-      box-shadow: var(--shadow);
-    }
-    .contact-form-wrap h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem;
-      color: var(--brown-dark); margin-bottom: 28px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label {
-      display: block; font-size: 0.82rem; font-weight: 700;
-      color: var(--brown-mid); margin-bottom: 6px; letter-spacing: 0.5px;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%; padding: 13px 16px;
-      border: 1.5px solid rgba(107,63,35,0.2);
-      border-radius: 10px; font-family: 'Nunito', sans-serif;
-      font-size: 0.93rem; color: var(--charcoal);
-      background: var(--cream); transition: var(--transition);
-      outline: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold); background: var(--white);
-      box-shadow: 0 0 0 3px rgba(201,150,58,0.12);
-    }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit {
-      width: 100%; padding: 16px; font-size: 1rem; font-weight: 700;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: var(--brown-dark); border: none; border-radius: 10px;
-      cursor: pointer; transition: var(--transition); font-family: 'Nunito', sans-serif;
-    }
-    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,150,58,0.35); }
-
-    /* Map */
-    .map-wrap { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); margin-top: 50px; }
-    .map-wrap iframe { width: 100%; height: 380px; border: 0; display: block; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--brown-dark); color: rgba(255,255,255,0.75);
-      padding: 50px 5% 30px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-brand .name {
-      font-family: 'Playfair Display', serif; font-size: 1.6rem;
-      color: var(--white); margin-bottom: 6px;
-    }
-    .footer-brand .sub { font-size: 0.8rem; color: var(--gold-light); letter-spacing: 1px; margin-bottom: 14px; }
-    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
-    .footer-col h5 {
-      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
-      color: var(--gold-light); margin-bottom: 18px; font-weight: 700;
-    }
-    .footer-col ul li {
-      font-size: 0.88rem; margin-bottom: 10px; cursor: pointer; transition: color 0.2s;
-    }
-    .footer-col ul li:hover { color: var(--gold-light); }
-    .footer-divider { border-color: rgba(255,255,255,0.1); margin-bottom: 22px; }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      font-size: 0.82rem; color: rgba(255,255,255,0.45);
-    }
-    .footer-bottom span { color: var(--gold-light); }
 
     /* ===== TOAST ===== */
     .toast {
-      position: fixed; bottom: 100px; right: 24px; z-index: 9999;
-      background: var(--brown-dark); color: white; padding: 14px 22px;
-      border-radius: 10px; font-size: 0.9rem; font-weight: 600;
-      border-left: 4px solid #25D366;
-      transform: translateX(120%); transition: transform 0.4s ease;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      position: fixed; bottom: 100px; right: 26px; z-index: 9999;
+      background: var(--bd); color: var(--white); padding: 13px 20px;
+      border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+      border-left: 4px solid #22C35E;
+      transform: translateX(140%); transition: transform 0.4s ease;
+      box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px;
     }
     .toast.show { transform: translateX(0); }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 960px) {
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+    /* ==============================================================
+       HERO
+    ============================================================== */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(28,10,2,0.93) 0%, rgba(92,52,24,0.80) 55%, rgba(28,10,2,0.72) 100%),
+        url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1800&q=85') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 0 6%; padding-top: 70px; position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(to top, var(--cream), transparent); pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.30);
+      color: var(--gold-lt); padding: 9px 20px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 30px; animation: slideUp 0.7s ease both;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 700;
+      color: var(--white); line-height: 1.1; margin-bottom: 22px;
+      animation: slideUp 0.7s 0.1s ease both;
+    }
+    .hero h1 em { color: var(--gold-lt); font-style: italic; }
+    .hero-desc {
+      color: rgba(255,255,255,0.72); font-size: 1.05rem; line-height: 1.75;
+      margin-bottom: 38px; max-width: 520px;
+      animation: slideUp 0.7s 0.18s ease both;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: slideUp 0.7s 0.26s ease both; }
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 56px; flex-wrap: wrap;
+      animation: slideUp 0.7s 0.34s ease both;
+    }
+    .hero-stat { padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .hero-stat:first-child { padding-left: 0; }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--gold-lt); display: block; line-height: 1;
+    }
+    .hero-stat .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 500; }
+    @keyframes slideUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ==============================================================
+       SERVICES PREVIEW (HOME)
+    ============================================================== */
+    .svc-preview-sec { background: var(--white); }
+    .svc-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .svc-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: var(--cream); border: 1px solid var(--cream-3);
+      transition: var(--trans); cursor: pointer; position: relative;
+    }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(200,146,42,0.2); }
+    .svc-card-img { height: 210px; position: relative; overflow: hidden; }
+    .svc-card-img img { width:100%; height:100%; object-fit:cover; transition: transform 0.6s ease; }
+    .svc-card:hover .svc-card-img img { transform: scale(1.06); }
+    .svc-card-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(44,26,14,0.55));
+    }
+    .svc-icon-badge {
+      position: absolute; bottom: 16px; left: 18px; z-index: 1;
+      width: 46px; height: 46px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .svc-icon-badge i { color: var(--bd); font-size: 18px; }
+    .svc-card-arrow {
+      position: absolute; top: 16px; right: 16px; z-index: 1;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--white); display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: var(--trans); box-shadow: var(--shadow-sm);
+    }
+    .svc-card-arrow i { color: var(--bd); font-size: 11px; }
+    .svc-card:hover .svc-card-arrow { opacity: 1; }
+    .svc-card-body { padding: 24px; }
+    .svc-card-body h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--bd); margin-bottom:8px; }
+    .svc-card-body p { font-size:0.88rem; color:var(--muted); line-height:1.7; }
+
+    /* Trust bar */
+    .trust-bar { background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%); padding: 60px 6%; }
+    .trust-items { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .trust-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 40px; border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(200,146,42,0.14); border: 1px solid rgba(200,146,42,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-icon i { color: var(--gold-lt); font-size: 18px; }
+    .trust-text .t1 { color: var(--white); font-weight: 700; font-size: 0.95rem; }
+    .trust-text .t2 { color: rgba(255,255,255,0.48); font-size: 0.78rem; margin-top: 2px; }
+
+    /* Home CTA */
+    .home-cta-sec { background: var(--cream-2); text-align: center; }
+
+    /* ==============================================================
+       SERVICES PAGE
+    ============================================================== */
+    .svc-detail-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      padding: 60px 0; border-bottom: 1px solid var(--cream-3);
+    }
+    .svc-detail-row:last-of-type { border-bottom: none; }
+    .svc-detail-img { border-radius: 20px; overflow: hidden; height: 400px; box-shadow: var(--shadow-lg); }
+    .svc-detail-img img { width:100%; height:100%; object-fit:cover; }
+    .feat-list { display: flex; flex-direction: column; gap: 10px; margin: 22px 0 28px; }
+    .feat-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.92rem; color: var(--ink); font-weight: 500;
+    }
+    .feat-list li .chk {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .feat-list li .chk i { color: var(--bd); font-size: 9px; font-weight: 900; }
+
+    .svc-cta-strip {
+      background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%);
+      padding: 70px 6%; text-align: center;
+    }
+    .svc-cta-strip h2 { font-family:'Cormorant Garamond',serif; color:var(--white); font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:14px; }
+    .svc-cta-strip p { color:rgba(255,255,255,0.65); margin-bottom:30px; }
+
+    /* ==============================================================
+       WHY US PAGE
+    ============================================================== */
+    .rating-block {
+      border-radius: 24px; overflow: hidden;
+      background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 60%, var(--bd) 100%);
+      padding: 56px; display: flex; align-items: center; gap: 60px;
+      flex-wrap: wrap; position: relative; margin-bottom: 56px;
+    }
+    .rating-block::before {
+      content: '\f005'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+      position: absolute; right: -10px; top: -20px;
+      font-size: 240px; color: rgba(200,146,42,0.06); line-height: 1; pointer-events: none;
+    }
+    .rating-num { text-align: center; flex-shrink: 0; }
+    .rating-num .big { font-family:'Cormorant Garamond',serif; font-size:5.5rem; font-weight:700; color:var(--gold-lt); line-height:1; }
+    .rating-num .stars { color:var(--gold); font-size:1.1rem; margin:8px 0; letter-spacing:3px; }
+    .rating-num .cnt { color:rgba(255,255,255,0.5); font-size:0.82rem; }
+    .rating-divider { width:1px; height:80px; background:rgba(255,255,255,0.12); flex-shrink:0; }
+    .rating-text h3 { font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--white); margin-bottom:12px; }
+    .rating-text p { color:rgba(255,255,255,0.68); line-height:1.75; font-size:0.95rem; max-width:420px; }
+
+    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .why-card {
+      background: var(--white); border-radius: var(--radius); padding: 34px 28px;
+      border: 1px solid var(--cream-3); transition: var(--trans); position: relative; overflow: hidden;
+    }
+    .why-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .why-card-icon {
+      width: 52px; height: 52px; border-radius: 14px; margin-bottom: 20px;
+      background: rgba(200,146,42,0.10); border: 1px solid rgba(200,146,42,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-card-icon i { color: var(--gold); font-size: 20px; }
+    .why-card h4 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:700; color:var(--bd); margin-bottom:10px; }
+    .why-card p { font-size:0.88rem; color:var(--muted); line-height:1.7; }
+
+    /* Reviews */
+    .reviews-sec { background: var(--cream-2); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .review-card {
+      background: var(--white); border-radius: var(--radius); padding: 30px;
+      border: 1px solid var(--cream-3); position: relative; transition: var(--trans);
+    }
+    .review-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+    .review-quote {
+      position: absolute; top: 14px; right: 20px;
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem;
+      color: rgba(200,146,42,0.10); line-height: 1; pointer-events: none;
+    }
+    .review-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .review-person { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--bm), var(--bl));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: 0.9rem;
+    }
+    .review-name { font-weight: 700; font-size: 0.88rem; color: var(--bd); }
+    .review-loc { font-size: 0.76rem; color: var(--muted); }
+
+    /* ==============================================================
+       CONTACT PAGE
+    ============================================================== */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
+    .info-cards { display: flex; flex-direction: column; gap: 18px; }
+    .info-card {
+      background: var(--white); border-radius: var(--radius); padding: 24px;
+      display: flex; gap: 18px; align-items: flex-start;
+      border: 1px solid var(--cream-3); transition: var(--trans);
+    }
+    .info-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .info-card-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-card-icon i { color: var(--bd); font-size: 18px; }
+    .info-card-text h4 { font-size:0.72rem; text-transform:uppercase; letter-spacing:2px; color:var(--muted); font-weight:700; margin-bottom:5px; }
+    .info-card-text p { font-size:0.93rem; color:var(--ink); font-weight:600; line-height:1.5; }
+    .info-card-text small { color:var(--muted); font-size:0.78rem; }
+
+    /* Call & WA buttons */
+    .call-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: var(--bd); color: var(--white); font-weight: 700; font-size: 1rem;
+      padding: 16px 24px; border-radius: var(--radius); cursor: pointer;
+      transition: var(--trans); margin-top: 20px;
+      border: none; width: 100%; font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+    }
+    .call-btn:hover { background: var(--bm); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: #22C35E; color: var(--white); font-weight: 700; font-size: 1rem;
+      padding: 16px 24px; border-radius: var(--radius); cursor: pointer;
+      transition: var(--trans); margin-top: 12px;
+      border: none; width: 100%; font-family: 'DM Sans', sans-serif;
+    }
+    .wa-btn:hover { background: #1DAE54; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(34,195,94,0.3); }
+
+    /* Form */
+    .form-box {
+      background: var(--white); border-radius: 22px; padding: 42px;
+      box-shadow: var(--shadow); border: 1px solid var(--cream-3);
+    }
+    .form-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--bd); margin-bottom:6px; }
+    .form-box .form-sub { font-size:0.88rem; color:var(--muted); margin-bottom:28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-g { margin-bottom: 18px; }
+    .form-g label { display:block; font-size:0.8rem; font-weight:700; color:var(--bm); margin-bottom:7px; }
+    .form-g input, .form-g select, .form-g textarea {
+      width:100%; padding:13px 16px;
+      border:1.5px solid var(--cream-3); border-radius:10px;
+      font-family:'DM Sans',sans-serif; font-size:0.92rem; color:var(--ink);
+      background:var(--cream); outline:none; transition:var(--trans);
+    }
+    .form-g input:focus, .form-g select:focus, .form-g textarea:focus {
+      border-color:var(--gold); background:var(--white);
+      box-shadow:0 0 0 3px rgba(200,146,42,0.10);
+    }
+    .form-g textarea { min-height:110px; resize:vertical; }
+    .form-submit {
+      width:100%; padding:16px; font-size:1rem; font-weight:700;
+      background:linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%);
+      color:var(--bd); border:none; border-radius:12px;
+      cursor:pointer; transition:var(--trans); font-family:'DM Sans',sans-serif;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+    }
+    .form-submit:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,146,42,0.35); }
+    .form-note { font-size:0.76rem; color:var(--muted); text-align:center; margin-top:12px; }
+
+    /* Map */
+    .map-wrap { margin-top:56px; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); }
+    .map-wrap iframe { display:block; width:100%; height:380px; border:0; }
+
+    /* ==============================================================
+       FOOTER
+    ============================================================== */
+    footer {
+      background: var(--bd); color: rgba(255,255,255,0.65);
+      padding: 60px 6% 30px;
+    }
+    .footer-top { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:50px; margin-bottom:44px; }
+    .fb-logo { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+    .fb-icon {
+      width:42px; height:42px; border-radius:10px;
+      background:linear-gradient(135deg, var(--gold), var(--gold-lt));
+      display:flex; align-items:center; justify-content:center;
+    }
+    .fb-icon i { color:var(--bd); font-size:18px; }
+    .fb-name { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--white); }
+    .fb-tag { font-size:0.62rem; color:var(--gold-lt); letter-spacing:2px; text-transform:uppercase; }
+    .footer-brand p { font-size:0.87rem; line-height:1.75; }
+    .footer-col h5 { font-size:0.75rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--gold-lt); margin-bottom:20px; font-weight:700; }
+    .footer-col ul li {
+      font-size:0.87rem; margin-bottom:11px; cursor:pointer; transition:color 0.2s;
+      display:flex; align-items:center; gap:8px;
+    }
+    .footer-col ul li i { font-size:0.7rem; color:var(--gold); }
+    .footer-col ul li:hover { color:var(--gold-lt); }
+    .footer-hr { border:none; border-top:1px solid rgba(255,255,255,0.08); margin-bottom:24px; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.8rem; }
+    .footer-bottom .copy { color:rgba(255,255,255,0.38); }
+    .footer-bottom .seo { color:rgba(255,255,255,0.28); }
+    .footer-bottom span { color:var(--gold-lt); }
+
+    /* ==============================================================
+       RESPONSIVE
+    ============================================================== */
+    @media (max-width: 980px) {
+      .why-grid { grid-template-columns: repeat(2,1fr); }
+      .svc-cards { grid-template-columns: repeat(2,1fr); }
+      .reviews-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-top .footer-brand { grid-column: span 2; }
+      .trust-item { padding: 20px 24px; }
+      .rating-block { padding: 40px; gap: 32px; }
+      .contact-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
-      section { padding: 70px 5%; }
+      section { padding: 64px 5%; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .grid-3, .grid-2, .why-grid { grid-template-columns: 1fr; }
-      .reviews-grid { grid-template-columns: 1fr; }
+      .svc-cards, .why-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .svc-detail-row { grid-template-columns: 1fr; gap: 30px; }
+      .svc-detail-img { height: 260px; }
+      .svc-detail-row.img-first .svc-detail-img { order: -1; }
       .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top .footer-brand { grid-column: auto; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .rating-hero { flex-direction: column; padding: 32px 24px; }
-      .hero-stats { gap: 20px; }
+      .rating-block { flex-direction: column; padding: 30px 22px; gap: 22px; }
+      .rating-divider { display: none; }
+      .trust-items { flex-direction: column; }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 18px 0; }
+      .trust-item:last-child { border-bottom: none; }
+      .hero-stats { gap: 0; }
+      .hero-stat { padding: 0 16px; }
+      .hero h1 { font-size: 2.6rem; }
+      .form-box { padding: 26px 18px; }
     }
   </style>
 </head>
 <body>
 
 <!-- ===== NAVBAR ===== -->
-<nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">
-    <div class="nav-logo-icon">🏠</div>
-    <div class="nav-logo-text">
-      <span class="brand">Shristi Interior</span>
-      <span class="tagline">Thane West</span>
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-brand-logo"><i class="fa-solid fa-house-chimney"></i></div>
+    <div class="nav-brand-text">
+      <div class="n1">Shristi Interior</div>
+      <div class="n2">Thane West</div>
     </div>
   </div>
   <div class="nav-links">
-    <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
-    <a onclick="showPage('services')" id="nav-services">Services</a>
-    <a onclick="showPage('why')" id="nav-why">Why Us</a>
-    <a onclick="showPage('contact')" class="nav-cta" id="nav-contact">📞 Contact Us</a>
+    <a onclick="showPage('home')"     id="nl-home"     class="active">Home</a>
+    <a onclick="showPage('services')" id="nl-services">Services</a>
+    <a onclick="showPage('why')"      id="nl-why">Why Us</a>
+    <a onclick="showPage('contact')"  id="nl-contact" class="nav-cta-btn"><i class="fa-solid fa-phone"></i> Contact Us</a>
   </div>
   <div class="hamburger" id="ham" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -529,395 +540,450 @@
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a onclick="showPage('home');closeMenu()">Home</a>
-  <a onclick="showPage('services');closeMenu()">Services</a>
-  <a onclick="showPage('why');closeMenu()">Why Choose Us</a>
-  <a onclick="showPage('contact');closeMenu()" class="m-cta">📞 Contact Us</a>
+<div class="mob-menu" id="mobMenu">
+  <a onclick="showPage('home');closeMenu()"><i class="fa-solid fa-house"></i> Home</a>
+  <a onclick="showPage('services');closeMenu()"><i class="fa-solid fa-hammer"></i> Services</a>
+  <a onclick="showPage('why');closeMenu()"><i class="fa-solid fa-star"></i> Why Choose Us</a>
+  <a class="mob-menu-cta" onclick="showPage('contact');closeMenu()"><i class="fa-solid fa-phone"></i> Contact Us</a>
 </div>
 
-<!-- ===== PAGE: HOME ===== -->
+
+<!-- ==========================================
+     PAGE: HOME
+========================================== -->
 <div class="page active" id="page-home">
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-inner">
       <div class="hero-badge">
-        <span class="star">★</span> 4.7 Rated · Thane West's Trusted Choice
+        <i class="fa-solid fa-star" style="color:var(--gold);"></i>
+        4.7 Rated &nbsp;&bull;&nbsp; Thane West's Trusted Choice
       </div>
-      <h1>Your Home Deserves <em>the Best Craft</em></h1>
-      <p>Thane's trusted name in custom carpentry and interior decoration — built with precision, designed with passion. Serving Manpada & Thane West since years.</p>
+      <h1>Your Home Deserves<br><em>the Best Craft</em></h1>
+      <p class="hero-desc">Thane's trusted name in custom carpentry and interior decoration — built with precision, designed with passion. Serving Manpada &amp; Thane West with pride.</p>
       <div class="hero-btns">
-        <button class="btn btn-gold" onclick="openWhatsApp('Hi, I am interested in your interior services. Please share details.')">💬 WhatsApp Us</button>
-        <button class="btn btn-outline" onclick="showPage('services')">Our Services →</button>
+        <button class="btn btn-gold" onclick="openWA('Hi! I am interested in your interior services. Please share details.')">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </button>
+        <button class="btn btn-outline-w" onclick="showPage('services')">
+          Our Services <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="num">4.7★</span>
-          <span class="label">Google Rating</span>
+          <span class="val">4.7 <i class="fa-solid fa-star" style="font-size:1.3rem; color:var(--gold-lt);"></i></span>
+          <span class="lbl">Google Rating</span>
         </div>
         <div class="hero-stat">
-          <span class="num">39+</span>
-          <span class="label">Happy Customers</span>
+          <span class="val">39+</span>
+          <span class="lbl">Happy Customers</span>
         </div>
         <div class="hero-stat">
-          <span class="num">3</span>
-          <span class="label">Core Services</span>
+          <span class="val">3</span>
+          <span class="lbl">Core Services</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quick Services Preview -->
-  <section style="background: var(--white);">
-    <div class="sec-header center">
-      <div class="sec-label">What We Do</div>
-      <h2 class="sec-title">Crafting Beautiful Spaces</h2>
-      <div class="divider center"></div>
-      <p class="sec-sub">From raw wood to refined interiors — we handle every detail with care and craftsmanship.</p>
+  <!-- Services Preview -->
+  <section class="svc-preview-sec">
+    <div class="sec-head cx">
+      <div class="chip" style="display:inline-flex; margin:0 auto 16px;"><i class="fa-solid fa-screwdriver-wrench"></i> What We Do</div>
+      <h2 class="h-title">Crafting Beautiful Spaces</h2>
+      <div class="gold-bar cx"></div>
+      <p class="h-sub">From raw wood to refined interiors — we handle every detail with care and craftsmanship.</p>
     </div>
-    <div class="grid-3">
-      <div class="svc-card" style="cursor:pointer" onclick="showPage('services')">
-        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80')">
-          <div class="svc-icon">🪚</div>
+    <div class="svc-cards">
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-card-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Carpenter Services" loading="lazy" />
+          <div class="svc-icon-badge"><i class="fa-solid fa-hammer"></i></div>
+          <div class="svc-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         </div>
-        <div class="svc-body">
+        <div class="svc-card-body">
           <h3>Carpenter Services</h3>
           <p>Precision woodwork for every nook of your home — solid, durable, and beautifully finished.</p>
         </div>
       </div>
-      <div class="svc-card" style="cursor:pointer" onclick="showPage('services')">
-        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')">
-          <div class="svc-icon">🚪</div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-card-img">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Interior Carpentry" loading="lazy" />
+          <div class="svc-icon-badge"><i class="fa-solid fa-door-open"></i></div>
+          <div class="svc-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         </div>
-        <div class="svc-body">
+        <div class="svc-card-body">
           <h3>Interior Carpentry</h3>
           <p>Wardrobes, modular kitchens, false ceilings — all custom-built and fitted by our skilled team.</p>
         </div>
       </div>
-      <div class="svc-card" style="cursor:pointer" onclick="showPage('services')">
-        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80')">
-          <div class="svc-icon">🎨</div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-card-img">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Interior Decoration" loading="lazy" />
+          <div class="svc-icon-badge"><i class="fa-solid fa-paintbrush"></i></div>
+          <div class="svc-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
         </div>
-        <div class="svc-body">
+        <div class="svc-card-body">
           <h3>Full Interior Decoration</h3>
-          <p>From concept to completion — layout, furniture, colors, and styling. Your vision, our execution.</p>
+          <p>From concept to completion — layout, furniture, colours, and styling. Your vision, our execution.</p>
         </div>
       </div>
     </div>
     <div style="text-align:center; margin-top:40px;">
-      <button class="btn btn-dark" onclick="showPage('services')">Explore All Services →</button>
+      <button class="btn btn-dark" onclick="showPage('services')">Explore All Services <i class="fa-solid fa-arrow-right"></i></button>
     </div>
   </section>
 
-  <!-- Trust Strip -->
-  <section style="background: linear-gradient(135deg, var(--brown-dark), var(--brown-mid)); padding: 60px 5%;">
-    <div style="display:flex; justify-content:center; gap:60px; flex-wrap:wrap; text-align:center;">
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--gold-light); font-weight:700;">✔ Repeat</div>
-        <div style="color:rgba(255,255,255,0.65); font-size:0.88rem; margin-top:4px;">Customers Trust Us Again</div>
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="trust-text">
+          <div class="t1">Repeat Customers</div>
+          <div class="t2">Clients come back again &amp; again</div>
+        </div>
       </div>
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--gold-light); font-weight:700;">✔ Local</div>
-        <div style="color:rgba(255,255,255,0.65); font-size:0.88rem; margin-top:4px;">Based in Manpada, Thane</div>
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="trust-text">
+          <div class="t1">Locally Based</div>
+          <div class="t2">Manpada, Thane West</div>
+        </div>
       </div>
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--gold-light); font-weight:700;">✔ Honest</div>
-        <div style="color:rgba(255,255,255,0.65); font-size:0.88rem; margin-top:4px;">Clear Pricing, No Surprises</div>
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <div class="trust-text">
+          <div class="t1">Honest Pricing</div>
+          <div class="t2">Clear estimates, no surprises</div>
+        </div>
       </div>
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--gold-light); font-weight:700;">✔ Quality</div>
-        <div style="color:rgba(255,255,255,0.65); font-size:0.88rem; margin-top:4px;">Durable Home Furniture Work</div>
+      <div class="trust-item">
+        <div class="trust-icon"><i class="fa-solid fa-medal"></i></div>
+        <div class="trust-text">
+          <div class="t1">Quality Guaranteed</div>
+          <div class="t2">Durable home furniture work</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section style="background: var(--cream-dark); text-align:center; padding:80px 5%;">
-    <div class="sec-label">Ready to Transform Your Space?</div>
-    <h2 class="sec-title" style="margin:0 auto 18px; max-width:560px;">Let's Build Something <em style="font-style:italic; color:var(--gold);">Beautiful</em> Together</h2>
-    <div class="divider center"></div>
-    <p class="sec-sub" style="margin:0 auto 36px;">Visit us at Manpada or give us a call. We're happy to discuss your project and provide a free estimate.</p>
+  <!-- CTA -->
+  <section class="home-cta-sec">
+    <div class="chip" style="display:inline-flex;"><i class="fa-solid fa-handshake"></i> Ready to Start?</div>
+    <h2 class="h-title" style="max-width:520px; margin:0 auto 14px;">Let's Build Something <em style="font-style:italic; color:var(--gold);">Beautiful</em> Together</h2>
+    <div class="gold-bar cx"></div>
+    <p class="h-sub" style="margin:0 auto 36px;">Visit us at Manpada or give us a call. We're happy to discuss your project and provide a free estimate.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <button class="btn btn-gold" onclick="openWhatsApp('Hello! I would like to get a free estimate for my interior project.')">💬 Get Free Estimate</button>
-      <a class="btn btn-dark" href="tel:+919322062239">📞 Call Now</a>
+      <button class="btn btn-gold" onclick="openWA('Hello! I would like a free estimate for my interior project.')">
+        <i class="fa-brands fa-whatsapp"></i> Get Free Estimate
+      </button>
+      <a class="btn btn-dark" href="tel:+919322062239">
+        <i class="fa-solid fa-phone"></i> Call Now
+      </a>
     </div>
   </section>
 
-</div><!-- end home page -->
+  <div id="home-footer-slot"></div>
+</div><!-- /page-home -->
 
-<!-- ===== PAGE: SERVICES ===== -->
+
+<!-- ==========================================
+     PAGE: SERVICES
+========================================== -->
 <div class="page" id="page-services">
-  <section class="services-intro">
-    <div class="sec-header">
-      <div class="sec-label">Our Expertise</div>
-      <h1 class="sec-title">Services We Offer</h1>
-      <div class="divider"></div>
-      <p class="sec-sub">Every project is handled in-house by our skilled team. No outsourcing, no shortcuts — just quality craftsmanship delivered on time.</p>
-    </div>
+
+  <section style="padding-top:110px; padding-bottom:30px;">
+    <div class="chip"><i class="fa-solid fa-layer-group"></i> Our Expertise</div>
+    <h1 class="h-title">Services We Offer</h1>
+    <div class="gold-bar"></div>
+    <p class="h-sub">Every project is handled in-house by our skilled team. No outsourcing, no shortcuts — quality craftsmanship, delivered on time.</p>
   </section>
 
-  <section class="services-grid" style="padding-top:20px;">
-    <!-- Service 1 -->
-    <div style="margin-bottom:50px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-        <div>
-          <div class="sec-label">Service 01</div>
-          <h2 class="sec-title">Carpenter Services</h2>
-          <div class="divider"></div>
-          <p style="color:var(--text-muted); line-height:1.75; margin-bottom:24px;">From solid wood joinery to precision-fitted fixtures — our carpenters bring hands-on expertise to every corner of your home. Whether it's a single shelf or a full room fit-out, we handle it with skill and care.</p>
-          <ul class="svc-features" style="margin-bottom:28px;">
-            <li>Custom wood furniture & shelving</li>
-            <li>Door & window frame fitting</li>
-            <li>Wooden flooring & panelling</li>
-            <li>Repair & restoration of existing furniture</li>
-            <li>Home renovation carpentry</li>
-          </ul>
-          <button class="btn btn-gold" onclick="openWhatsApp('Hi, I need carpenter services. Please help.')">📲 Enquire Now</button>
-        </div>
-        <div style="border-radius:16px; overflow:hidden; box-shadow:var(--shadow); height:380px;">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Carpenter Services" style="width:100%;height:100%;object-fit:cover;" />
-        </div>
+  <section style="padding-top:10px;">
+
+    <!-- S1 -->
+    <div class="svc-detail-row">
+      <div>
+        <div class="chip"><i class="fa-solid fa-hammer"></i> Service 01</div>
+        <h2 class="h-title">Carpenter Services</h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted); line-height:1.75; font-size:0.97rem;">From solid wood joinery to precision-fitted fixtures — our carpenters bring hands-on expertise to every corner of your home. Whether it's a single shelf or a full room fit-out, we handle it with skill and care.</p>
+        <ul class="feat-list">
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Custom wood furniture &amp; shelving</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Door &amp; window frame fitting</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Wooden flooring &amp; panelling</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Repair &amp; restoration of furniture</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Home renovation carpentry</li>
+        </ul>
+        <button class="btn btn-gold" onclick="openWA('Hi, I need carpenter services. Please help.')">
+          <i class="fa-brands fa-whatsapp"></i> Enquire Now
+        </button>
+      </div>
+      <div class="svc-detail-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Carpenter Services" loading="lazy" />
       </div>
     </div>
 
-    <hr style="border:none; border-top:1px solid rgba(107,63,35,0.12); margin-bottom:50px;" />
-
-    <!-- Service 2 -->
-    <div style="margin-bottom:50px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-        <div style="border-radius:16px; overflow:hidden; box-shadow:var(--shadow); height:380px;">
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Interior Carpentry" style="width:100%;height:100%;object-fit:cover;" />
-        </div>
-        <div>
-          <div class="sec-label">Service 02</div>
-          <h2 class="sec-title">Interior Carpentry</h2>
-          <div class="divider"></div>
-          <p style="color:var(--text-muted); line-height:1.75; margin-bottom:24px;">Custom wardrobes, modular kitchen frames, false ceilings, wall panelling — we craft it all in-house. Every piece is measured, built, and installed by our own team for a perfect fit every time.</p>
-          <ul class="svc-features" style="margin-bottom:28px;">
-            <li>Custom wardrobes & storage units</li>
-            <li>Modular kitchen framework</li>
-            <li>False ceiling & POP work</li>
-            <li>TV unit & entertainment cabinets</li>
-            <li>Study tables & office furniture</li>
-          </ul>
-          <button class="btn btn-gold" onclick="openWhatsApp('Hi, I need interior carpentry work done. Please guide me.')">📲 Enquire Now</button>
-        </div>
+    <!-- S2 -->
+    <div class="svc-detail-row img-first">
+      <div class="svc-detail-img">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Interior Carpentry" loading="lazy" />
+      </div>
+      <div>
+        <div class="chip"><i class="fa-solid fa-door-open"></i> Service 02</div>
+        <h2 class="h-title">Interior Carpentry</h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted); line-height:1.75; font-size:0.97rem;">Custom wardrobes, modular kitchen frames, false ceilings, wall panelling — we craft it all in-house. Every piece is measured, built, and installed by our own team for a perfect fit.</p>
+        <ul class="feat-list">
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Custom wardrobes &amp; storage units</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Modular kitchen framework</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> False ceiling &amp; POP work</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> TV unit &amp; entertainment cabinets</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Study tables &amp; office furniture</li>
+        </ul>
+        <button class="btn btn-gold" onclick="openWA('Hi, I need interior carpentry work done. Please guide me.')">
+          <i class="fa-brands fa-whatsapp"></i> Enquire Now
+        </button>
       </div>
     </div>
 
-    <hr style="border:none; border-top:1px solid rgba(107,63,35,0.12); margin-bottom:50px;" />
-
-    <!-- Service 3 -->
-    <div style="margin-bottom:30px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-        <div>
-          <div class="sec-label">Service 03</div>
-          <h2 class="sec-title">Full Interior Decoration</h2>
-          <div class="divider"></div>
-          <p style="color:var(--text-muted); line-height:1.75; margin-bottom:24px;">We don't just furnish spaces — we transform them. From concept to completion, our interior decor service covers layout planning, furniture selection, colour coordination, lighting, and final styling. Your vision, our execution.</p>
-          <ul class="svc-features" style="margin-bottom:28px;">
-            <li>Space planning & layout design</li>
-            <li>Furniture selection & procurement</li>
-            <li>Colour scheme & wallpaper consultation</li>
-            <li>Lighting design & placement</li>
-            <li>Final styling & finishing touches</li>
-          </ul>
-          <button class="btn btn-gold" onclick="openWhatsApp('Hi, I want full interior decoration for my home. Please advise.')">📲 Enquire Now</button>
-        </div>
-        <div style="border-radius:16px; overflow:hidden; box-shadow:var(--shadow); height:380px;">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="Interior Decoration" style="width:100%;height:100%;object-fit:cover;" />
-        </div>
+    <!-- S3 -->
+    <div class="svc-detail-row">
+      <div>
+        <div class="chip"><i class="fa-solid fa-paintbrush"></i> Service 03</div>
+        <h2 class="h-title">Full Interior Decoration</h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted); line-height:1.75; font-size:0.97rem;">We don't just furnish spaces — we transform them. From concept to completion, our interior decor service covers layout planning, furniture selection, colour coordination, lighting, and final styling.</p>
+        <ul class="feat-list">
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Space planning &amp; layout design</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Furniture selection &amp; procurement</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Colour scheme &amp; wallpaper consultation</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Lighting design &amp; placement</li>
+          <li><span class="chk"><i class="fa-solid fa-check"></i></span> Final styling &amp; finishing touches</li>
+        </ul>
+        <button class="btn btn-gold" onclick="openWA('Hi, I want full interior decoration for my home. Please advise.')">
+          <i class="fa-brands fa-whatsapp"></i> Enquire Now
+        </button>
+      </div>
+      <div class="svc-detail-img">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Interior Decoration" loading="lazy" />
       </div>
     </div>
+
   </section>
 
-  <!-- Footer repeat CTA -->
-  <section style="background: linear-gradient(135deg, var(--brown-dark), var(--brown-mid)); text-align:center; padding:70px 5%;">
-    <h2 style="font-family:'Playfair Display',serif; color:var(--white); font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:16px;">Not Sure What You Need?</h2>
-    <p style="color:rgba(255,255,255,0.68); margin-bottom:30px; font-size:0.97rem;">Call us or WhatsApp — we'll guide you to the right solution for your home and budget.</p>
+  <!-- CTA Strip -->
+  <div class="svc-cta-strip">
+    <h2>Not Sure What You Need?</h2>
+    <p>Call us or WhatsApp — we'll guide you to the right solution for your home and budget.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <button class="btn btn-gold" onclick="openWhatsApp('Hi, I need help deciding which service is right for my home.')">💬 Chat With Us</button>
-      <a class="btn btn-outline" href="tel:+919322062239">📞 093220 62239</a>
+      <button class="btn btn-gold" onclick="openWA('Hi, I need help deciding which service is right for my home.')">
+        <i class="fa-brands fa-whatsapp"></i> Chat With Us
+      </button>
+      <a class="btn btn-outline-w" href="tel:+919322062239">
+        <i class="fa-solid fa-phone"></i> 093220 62239
+      </a>
     </div>
-  </section>
+  </div>
 
-  <div id="services-footer"></div>
-</div><!-- end services page -->
+  <div id="svc-footer-slot"></div>
+</div><!-- /page-services -->
 
-<!-- ===== PAGE: WHY US ===== -->
+
+<!-- ==========================================
+     PAGE: WHY US
+========================================== -->
 <div class="page" id="page-why">
-  <section class="why-intro">
-    <div class="sec-header">
-      <div class="sec-label">Why Choose Us</div>
-      <h1 class="sec-title">Thane's Most Trusted<br>Interior & Carpentry Team</h1>
-      <div class="divider"></div>
-      <p class="sec-sub">Our 4.7-star rating speaks for itself — but here's what actually makes us different from the rest.</p>
-    </div>
+
+  <section style="padding-top:110px; padding-bottom:30px;">
+    <div class="chip"><i class="fa-solid fa-trophy"></i> Why Choose Us</div>
+    <h1 class="h-title">Thane's Most Trusted<br>Interior &amp; Carpentry Team</h1>
+    <div class="gold-bar"></div>
+    <p class="h-sub">Our 4.7-star rating speaks for itself — but here's what actually makes us different.</p>
   </section>
 
-  <section style="padding-top:20px;">
-    <!-- Rating Hero Block -->
-    <div class="rating-hero">
-      <div class="rating-big">
-        <div class="num">4.7</div>
-        <div class="stars">★★★★★</div>
-        <div class="count">Based on 39 Google Reviews</div>
+  <section style="padding-top:10px;">
+    <div class="rating-block">
+      <div class="rating-num">
+        <div class="big">4.7</div>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <div class="cnt">39 Google Reviews</div>
       </div>
+      <div class="rating-divider"></div>
       <div class="rating-text">
         <h3>"They Keep Coming Back — That's Our Biggest Award"</h3>
-        <p>Our clients don't just come once — they come back for every new room, every renovation, every upgrade. Families across Manpada and Thane West trust us again and again. That loyalty is our biggest achievement.</p>
+        <p>Our clients don't just come once — they come back for every new room, renovation, and upgrade. Families across Manpada and Thane West trust us again and again. That loyalty is our biggest achievement.</p>
       </div>
     </div>
 
-    <!-- Why Cards -->
     <div class="why-grid">
       <div class="why-card">
-        <div class="why-icon">🔁</div>
+        <div class="why-card-icon"><i class="fa-solid fa-rotate-left"></i></div>
         <h4>Repeat Customers Say It All</h4>
-        <p>Clients hire us again and again for furniture work and carpentry. Our work quality keeps people coming back — which is the strongest review we could ever receive.</p>
+        <p>Clients hire us again and again for furniture work and carpentry. Our work quality keeps people coming back — the strongest review we could ever receive.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🪵</div>
+        <div class="why-card-icon"><i class="fa-solid fa-tree"></i></div>
         <h4>Quality Home Furniture Work</h4>
-        <p>We're known across Thane West for solid, durable furniture craftsmanship. No fancy promises — just work that lasts for years and still looks great.</p>
+        <p>Known across Thane West for solid, durable furniture craftsmanship. No fancy promises — just work that lasts for years and still looks great.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">💰</div>
+        <div class="why-card-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
         <h4>Honest Pricing, No Surprises</h4>
-        <p>We give clear estimates upfront. What we quote is what you pay. Simple as that. No hidden costs, no last-minute additions — just transparent pricing.</p>
+        <p>We give clear estimates upfront. What we quote is what you pay. No hidden costs, no last-minute additions — just transparent pricing every time.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">📍</div>
-        <h4>Local & Reliable</h4>
-        <p>We're based right here in Manpada, Thane West. Quick response times, on-time visits, and a team that understands local homes and budgets.</p>
+        <div class="why-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h4>Local &amp; Reliable</h4>
+        <p>Based right here in Manpada, Thane West. Quick response times, on-time visits, and a team that understands local homes and budgets.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🔨</div>
+        <div class="why-card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <h4>End-to-End Service</h4>
-        <p>From raw material to final finish, everything happens under one roof. You deal with us — not 5 different vendors. Easier coordination, better results.</p>
+        <p>From raw material to final finish — everything under one roof. You deal with us, not 5 different vendors. Easier coordination, better results.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🏠</div>
+        <div class="why-card-icon"><i class="fa-solid fa-house-chimney"></i></div>
         <h4>We Know Thane Homes</h4>
-        <p>We've worked in apartments, bungalows and shops across Thane West. We understand the spaces, floor plans, and what works best in local homes.</p>
+        <p>We've worked in apartments, bungalows, and shops across Thane West. We understand local spaces, floor plans, and what works best here.</p>
       </div>
     </div>
   </section>
 
-  <!-- Reviews Section -->
-  <section class="reviews-section">
-    <div class="sec-header center">
-      <div class="sec-label">Customer Reviews</div>
-      <h2 class="sec-title">What Our Clients Say</h2>
-      <div class="divider center"></div>
+  <!-- Reviews -->
+  <section class="reviews-sec">
+    <div class="sec-head cx">
+      <div class="chip" style="display:inline-flex;"><i class="fa-solid fa-comment-dots"></i> Customer Reviews</div>
+      <h2 class="h-title">What Our Clients Say</h2>
+      <div class="gold-bar cx"></div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
         <p class="review-text">Excellent work! Got my wardrobe and kitchen shutters done. Very neat finish and delivered on time. Will definitely call them again for my bedroom furniture.</p>
-        <div class="review-author">
+        <div class="review-person">
           <div class="review-avatar">R</div>
           <div>
             <div class="review-name">Rahul M.</div>
-            <div class="review-loc">Manpada, Thane West</div>
+            <div class="review-loc"><i class="fa-solid fa-location-dot" style="color:var(--gold); font-size:0.7rem;"></i> Manpada, Thane West</div>
           </div>
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
         <p class="review-text">Hired them twice now — once for carpentry and once for full room interior work. Both times the quality was solid. They don't cut corners and pricing is fair.</p>
-        <div class="review-author">
+        <div class="review-person">
           <div class="review-avatar">P</div>
           <div>
             <div class="review-name">Priya S.</div>
-            <div class="review-loc">Sambhaji Nagar, Thane</div>
+            <div class="review-loc"><i class="fa-solid fa-location-dot" style="color:var(--gold); font-size:0.7rem;"></i> Sambhaji Nagar, Thane</div>
           </div>
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★☆</div>
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+        </div>
         <p class="review-text">Very good furniture work. The carpenter was professional, polite, and finished the job neatly. My living room sofa set looks amazing. Happy with the overall service.</p>
-        <div class="review-author">
+        <div class="review-person">
           <div class="review-avatar">A</div>
           <div>
             <div class="review-name">Aarti D.</div>
-            <div class="review-loc">Thane West</div>
+            <div class="review-loc"><i class="fa-solid fa-location-dot" style="color:var(--gold); font-size:0.7rem;"></i> Thane West</div>
           </div>
         </div>
       </div>
     </div>
-    <div style="text-align:center; margin-top:36px;">
-      <button class="btn btn-dark" onclick="showPage('contact')">Work With Us →</button>
+    <div style="text-align:center; margin-top:40px;">
+      <button class="btn btn-dark" onclick="showPage('contact')">Work With Us <i class="fa-solid fa-arrow-right"></i></button>
     </div>
   </section>
 
-  <div id="why-footer"></div>
-</div><!-- end why page -->
+  <div id="why-footer-slot"></div>
+</div><!-- /page-why -->
 
-<!-- ===== PAGE: CONTACT ===== -->
+
+<!-- ==========================================
+     PAGE: CONTACT
+========================================== -->
 <div class="page" id="page-contact">
-  <section class="contact-intro">
-    <div class="sec-header">
-      <div class="sec-label">Get In Touch</div>
-      <h1 class="sec-title">Visit Us or Give Us a Call</h1>
-      <div class="divider"></div>
-      <p class="sec-sub">We're open till 10 PM. Drop by at our shop in Manpada or WhatsApp us — we'll plan your project together, for free.</p>
-    </div>
+
+  <section style="padding-top:110px; padding-bottom:40px;">
+    <div class="chip"><i class="fa-solid fa-envelope"></i> Get In Touch</div>
+    <h1 class="h-title">Visit Us or Give Us a Call</h1>
+    <div class="gold-bar"></div>
+    <p class="h-sub">We're open till 10 PM. Drop by at our shop in Manpada or WhatsApp us — we'll plan your project together, for free.</p>
   </section>
 
   <section style="padding-top:0;">
-    <div class="contact-grid">
-      <!-- Left: Info -->
+    <div class="contact-layout">
+
+      <!-- Info -->
       <div>
-        <div class="contact-info">
+        <div class="info-cards">
           <div class="info-card">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
+            <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-card-text">
               <h4>Address</h4>
               <p>Shop No 2, Ganesh Colony, Manorama Nagar Rd,<br>Near Shani Mandir, Sambhaji Nagar,<br>Manpada, Thane West – 400607</p>
-              <small>Landmark: Near Shani Mandir</small>
+              <small><i class="fa-solid fa-landmark" style="color:var(--gold); font-size:0.7rem;"></i> Landmark: Near Shani Mandir</small>
             </div>
           </div>
           <div class="info-card">
-            <div class="info-icon">📞</div>
-            <div class="info-text">
+            <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="info-card-text">
               <h4>Phone</h4>
-              <p><a href="tel:+919322062239">093220 62239</a></p>
-              <small>Tap to call directly</small>
+              <p>093220 62239</p>
+              <small>Tap the button below to call directly</small>
             </div>
           </div>
           <div class="info-card">
-            <div class="info-icon">🕐</div>
-            <div class="info-text">
+            <div class="info-card-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="info-card-text">
               <h4>Working Hours</h4>
-              <p>Open Now · Closes at 10:00 PM</p>
-              <small>*Timings may vary on public holidays. Please call to confirm.</small>
+              <p>Open &nbsp;<span style="color:#22C35E; font-size:0.8rem; font-weight:700; background:rgba(34,195,94,0.1); padding:2px 8px; border-radius:4px;">Active</span>&nbsp; · Closes 10:00 PM</p>
+              <small><i class="fa-solid fa-circle-info" style="color:var(--gold); font-size:0.7rem;"></i> Timings may vary on holidays. Please call to confirm.</small>
             </div>
           </div>
         </div>
-        <div style="margin-top:24px;">
-          <a class="wa-contact-btn" onclick="openWhatsApp('Hi Shristi Interior! I would like to enquire about your services.')">
-            <span style="font-size:1.4rem;">💬</span>
-            WhatsApp Us Directly
-          </a>
-        </div>
+
+        <!-- Fixed Call Button - direct tel: link -->
+        <a class="call-btn" href="tel:+919322062239">
+          <i class="fa-solid fa-phone"></i> Call: 093220 62239
+        </a>
+        <button class="wa-btn" onclick="openWA('Hi Shristi Interior! I would like to enquire about your services.')">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us Directly
+        </button>
       </div>
 
-      <!-- Right: Form -->
-      <div class="contact-form-wrap">
+      <!-- Form -->
+      <div class="form-box">
         <h3>Send Us a Message</h3>
+        <p class="form-sub">Fill this form and it'll be sent directly to our WhatsApp.</p>
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-g">
             <label>Your Name *</label>
             <input type="text" id="f-name" placeholder="e.g. Rahul Sharma" />
           </div>
-          <div class="form-group">
+          <div class="form-g">
             <label>Phone Number *</label>
             <input type="tel" id="f-phone" placeholder="e.g. 9876543210" />
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-g">
           <label>Service Needed *</label>
           <select id="f-service">
             <option value="">Select a service...</option>
@@ -928,156 +994,145 @@
             <option>Other / Not Sure</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-g">
           <label>Your Message</label>
-          <textarea id="f-msg" placeholder="Describe your project, room size, timeline, or any questions..."></textarea>
+          <textarea id="f-msg" placeholder="Describe your project, room size, budget, or any questions..."></textarea>
         </div>
         <button class="form-submit" onclick="submitForm()">
-          📲 Send via WhatsApp
+          <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
         </button>
-        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:12px; text-align:center;">
-          This form sends your enquiry directly to our WhatsApp. Fast & easy!
-        </p>
+        <p class="form-note"><i class="fa-solid fa-lock" style="color:var(--gold); font-size:0.7rem;"></i> Your information is safe and only sent to us.</p>
       </div>
     </div>
 
     <!-- Map -->
     <div class="map-wrap">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.1!2d72.9664!3d19.2183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8f5e5e5e5e5%3A0x5b5b5b5b5b5b5b5b!2sSambhaji%20Nagar%2C%20Manpada%2C%20Thane%20West%2C%20Maharashtra%20400607!5e0!3m2!1sen!2sin!4v1"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Shristi Interior Location - Manpada, Thane West">
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.08!2d72.9660!3d19.2190!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b908ea000001%3A0x1!2sManorama%20Nagar%2C%20Manpada%2C%20Thane%20West%2C%20Maharashtra%20400607!5e0!3m2!1sen!2sin!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Shristi Interior – Manpada, Thane West">
       </iframe>
     </div>
   </section>
-</div><!-- end contact page -->
 
-<!-- ===== FOOTER (shared) ===== -->
-<footer id="main-footer">
-  <div class="footer-grid">
+  <div id="contact-footer-slot"></div>
+</div><!-- /page-contact -->
+
+
+<!-- ===== FOOTER ===== -->
+<footer id="site-footer">
+  <div class="footer-top">
     <div class="footer-brand">
-      <div class="name">Shristi Interior</div>
-      <div class="sub">Carpenter & Interior Decorator · Thane West</div>
+      <div class="fb-logo">
+        <div class="fb-icon"><i class="fa-solid fa-house-chimney"></i></div>
+        <div>
+          <div class="fb-name">Shristi Interior</div>
+          <div class="fb-tag">Carpenter &amp; Interior Decorator</div>
+        </div>
+      </div>
       <p>Trusted by families across Manpada and Thane West for quality carpentry, home furniture, and full interior decoration services.</p>
     </div>
     <div class="footer-col">
       <h5>Services</h5>
       <ul>
-        <li onclick="showPage('services')">Carpenter Services</li>
-        <li onclick="showPage('services')">Interior Carpentry</li>
-        <li onclick="showPage('services')">Full Interior Decoration</li>
-        <li onclick="showPage('services')">Home Furniture Work</li>
+        <li onclick="showPage('services')"><i class="fa-solid fa-chevron-right"></i> Carpenter Services</li>
+        <li onclick="showPage('services')"><i class="fa-solid fa-chevron-right"></i> Interior Carpentry</li>
+        <li onclick="showPage('services')"><i class="fa-solid fa-chevron-right"></i> Full Interior Decoration</li>
+        <li onclick="showPage('services')"><i class="fa-solid fa-chevron-right"></i> Home Furniture Work</li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Quick Links</h5>
       <ul>
-        <li onclick="showPage('home')">Home</li>
-        <li onclick="showPage('why')">Why Choose Us</li>
-        <li onclick="showPage('contact')">Contact Us</li>
-        <li><a href="tel:+919322062239" style="color:inherit;">📞 Call: 093220 62239</a></li>
+        <li onclick="showPage('home')"><i class="fa-solid fa-chevron-right"></i> Home</li>
+        <li onclick="showPage('why')"><i class="fa-solid fa-chevron-right"></i> Why Choose Us</li>
+        <li onclick="showPage('contact')"><i class="fa-solid fa-chevron-right"></i> Contact Us</li>
+        <li><a href="tel:+919322062239" style="color:inherit; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-phone" style="color:var(--gold);"></i> 093220 62239</a></li>
       </ul>
     </div>
   </div>
-  <hr class="footer-divider" />
+  <hr class="footer-hr" />
   <div class="footer-bottom">
-    <div>© 2025 <span>Shristi Interior</span>. All rights reserved. · Manpada, Thane West, Maharashtra 400607</div>
-    <div>Carpenter · Interior Decorator · Home Furniture · <span>Thane West</span></div>
+    <div class="copy">&copy; 2025 <span>Shristi Interior</span>. All rights reserved. &nbsp;&bull;&nbsp; Manpada, Thane West, Maharashtra 400607</div>
+    <div class="seo">Carpenter &nbsp;&bull;&nbsp; Interior Decorator &nbsp;&bull;&nbsp; Home Furniture &nbsp;&bull;&nbsp; <span>Thane West</span></div>
   </div>
 </footer>
 
-<!-- Floating WhatsApp Button -->
-<a class="float-wa" onclick="openWhatsApp('Hi Shristi Interior! I need help with my home interior.')">💬</a>
+<!-- Floating WhatsApp -->
+<div class="float-wa" onclick="openWA('Hi Shristi Interior! I need help with my home interior.')">
+  <i class="fa-brands fa-whatsapp"></i>
+</div>
 
-<!-- Toast Notification -->
-<div class="toast" id="toast">✅ Redirecting to WhatsApp...</div>
+<!-- Toast -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check" style="color:#22C35E;"></i> Redirecting to WhatsApp...
+</div>
 
-<!-- ===== JAVASCRIPT ===== -->
+
+<!-- ===== JS ===== -->
 <script>
-  // === Page Navigation ===
-  function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => a.classList.remove('active'));
-    const navEl = document.getElementById('nav-' + page);
-    if (navEl) navEl.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const WA_NUM = '919322062239';
 
-    // Move footer into correct page
-    const footer = document.getElementById('main-footer');
-    document.getElementById('page-' + page).appendChild(footer);
-  }
-
-  // === WhatsApp ===
-  const WA_NUMBER = '919322062239';
-  function openWhatsApp(msg) {
+  /* WhatsApp */
+  function openWA(msg) {
     showToast();
-    const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-    setTimeout(() => window.open(url, '_blank'), 600);
+    setTimeout(() => window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(msg), '_blank'), 550);
   }
 
+  /* Form submit */
   function submitForm() {
     const name    = document.getElementById('f-name').value.trim();
     const phone   = document.getElementById('f-phone').value.trim();
     const service = document.getElementById('f-service').value;
     const msg     = document.getElementById('f-msg').value.trim();
-
-    if (!name || !phone) {
-      alert('Please enter your name and phone number.');
-      return;
-    }
-
-    let waMsg = `Hi Shristi Interior! 🏠\n\n`;
-    waMsg += `*Name:* ${name}\n`;
-    waMsg += `*Phone:* ${phone}\n`;
-    if (service) waMsg += `*Service Needed:* ${service}\n`;
-    if (msg)     waMsg += `*Message:* ${msg}\n`;
-    waMsg += `\nPlease guide me further. Thank you!`;
-    openWhatsApp(waMsg);
+    if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+    let text = `Hi Shristi Interior!\n\n*Name:* ${name}\n*Phone:* ${phone}`;
+    if (service) text += `\n*Service:* ${service}`;
+    if (msg)     text += `\n*Message:* ${msg}`;
+    text += `\n\nKindly guide me further. Thank you!`;
+    openWA(text);
   }
 
-  // === Toast ===
+  /* Toast */
   function showToast() {
     const t = document.getElementById('toast');
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
   }
 
-  // === Hamburger Menu ===
+  /* Page navigation */
+  const PAGE_IDS = ['home', 'services', 'why', 'contact'];
+
+  function showPage(id) {
+    PAGE_IDS.forEach(p => {
+      document.getElementById('page-' + p).classList.remove('active');
+      const nl = document.getElementById('nl-' + p);
+      if (nl) nl.classList.remove('active');
+    });
+    document.getElementById('page-' + id).classList.add('active');
+    const nl = document.getElementById('nl-' + id);
+    if (nl) nl.classList.add('active');
+
+    // Move footer into current page
+    const footer = document.getElementById('site-footer');
+    const slot   = document.getElementById(id + '-footer-slot');
+    if (slot) slot.appendChild(footer);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* Hamburger */
   function toggleMenu() {
     document.getElementById('ham').classList.toggle('open');
-    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('mobMenu').classList.toggle('open');
   }
   function closeMenu() {
     document.getElementById('ham').classList.remove('open');
-    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('mobMenu').classList.remove('open');
   }
 
-  // === Init: put footer under home page ===
-  document.getElementById('page-home').appendChild(document.getElementById('main-footer'));
-
-  // === Responsive service layout fix ===
-  function fixServiceLayout() {
-    const grids = document.querySelectorAll('#page-services .contact-grid, #page-services [style*="grid-template-columns:1fr 1fr"]');
-    if (window.innerWidth <= 700) {
-      grids.forEach(g => {
-        g.style.gridTemplateColumns = '1fr';
-      });
-    }
-  }
-  // Fix service alternating layouts on mobile
-  function applyMobileServiceFix() {
-    const rows = document.querySelectorAll('#page-services section > div');
-    if (window.innerWidth <= 700) {
-      document.querySelectorAll('#page-services [style*="grid-template-columns:1fr 1fr"]').forEach(el => {
-        el.style.gridTemplateColumns = '1fr';
-      });
-    }
-  }
-  window.addEventListener('resize', applyMobileServiceFix);
-  applyMobileServiceFix();
+  /* Init: move footer to home slot */
+  document.getElementById('home-footer-slot').appendChild(document.getElementById('site-footer'));
 </script>
 </body>
 </html>
